@@ -132,3 +132,4 @@ dmypy.json
 
 # Extensions
 data/
+mailconfig.py
