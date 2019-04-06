@@ -10,6 +10,7 @@
   - https://gist.github.com/robulouski/7442321
   - https://stackoverflow.com/questions/4908472/how-to-receive-mail-using-python
   - https://gist.github.com/robulouski/7441883
-
+  - For sending emails
+  	- https://docs.python.org/3/library/email.examples.html
 # Author
 - **Cap Lee**
