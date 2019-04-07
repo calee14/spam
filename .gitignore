@@ -130,6 +130,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# jquery
+jquery-3.2.1.min.js
+
 # Extensions
 data/
 mailconfig.py
