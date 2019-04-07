@@ -1,19 +1,17 @@
 {
   "manifest_version": 2,
   "name": "You Got Spam",
-  "version": "0.1",
+  "version": "0.2",
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["*://*.stackoverflow.com/*"],
       "js": ["jquery-3.2.1.min.js", "content.js"]
     }
   ],
   "browser_action": {
   	"default_icon": "icon.png"
 	},
-  "permissions": ["storage"],
+  "permissions": ["tabs", "activeTab"],
 	"background": {
   	"scripts": ["background.js"]
 	}
