@@ -18,14 +18,14 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
     // }
 });
-// // When the browser-action button, the extension icon, is clicked...
-// chrome.browserAction.onClicked.addListener(function(tab) {
-// 	// make a request to the to get the selected text
-//   	chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response) {
-//   		// Have the callback make a service call to an api
-//      	sendServiceRequest(response.data);
-//   	});
-// });
+// When the browser-action button, the extension icon, is clicked...
+chrome.browserAction.onClicked.addListener(function(tab) {
+	// make a request to the to get the selected text
+  	chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response) {
+  		// Have the callback make a service call to an api
+     	sendServiceRequest(response.data);
+  	});
+});
 
 function sendServiceRequest(selectedText) {
   var serviceCall = 'http://www.google.com/search?q=' + selectedText;
