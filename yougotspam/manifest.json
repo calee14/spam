@@ -4,14 +4,17 @@
   "version": "0.2",
   "content_scripts": [
     {
-      "matches": ["*://*.stackoverflow.com/*"],
+      "matches": ["*://*.stackoverflow.com/*", "https://mail.google.com/*"],
       "js": ["jquery-3.2.1.min.js", "content.js"]
     }
   ],
   "browser_action": {
   	"default_icon": "icon.png"
 	},
-  "permissions": ["tabs", "activeTab"],
+  "permissions": ["tabs", 
+    "activeTab", 
+    "identity",
+    "*://*.google.com/*"],
 	"background": {
   	"scripts": ["background.js"]
 	}
