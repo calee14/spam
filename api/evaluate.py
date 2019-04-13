@@ -6,6 +6,12 @@ from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.callbacks import EarlyStopping
 
+# Getting the testing data
+with open('X_test.pkl', 'rb') as f:
+    X_test = pickle.load(f)
+with open('y_test.pkl', 'rb') as f:
+    y_test = pickle.load(f)
+
 test_sequences = tok.texts_to_sequences(X_test)
 test_sequences_matrix = sequence.pad_sequences(test_sequences,maxlen=max_len)
 
