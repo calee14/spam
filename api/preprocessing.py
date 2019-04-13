@@ -18,3 +18,10 @@ Y = Y.reshape(-1,1)
 
 # create the tesing and training data
 X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.15)
+print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+
+# save data to a picle file
+X_train.to_pickle('X_train.pkl')
+y_train.to_pickle('y_train.pkl')
+X_test.to_pickle('X_test.pkl')
+y_test.to_pickle('y_test.pkl')
