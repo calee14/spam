@@ -1,3 +1,4 @@
+import pickle
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import LSTM, Activation, Dense, Dropout, Input, Embedding
 from tensorflow.keras.optimizers import RMSprop
@@ -11,7 +12,7 @@ with open('X_train.pkl', 'rb') as f:
     X_train = pickle.load(f)
 with open('y_train.pkl', 'rb') as f:
     y_train = pickle.load(f)
-    
+
 # creating the tokenizer and turning the dataset into sequences
 max_words = 1000
 max_len = 150
@@ -20,6 +21,10 @@ tok.fit_on_texts(X_train)
 sequences = tok.texts_to_sequences(X_train)
 print(sequences[0])
 sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len)
+
+# saving tokenizer for future use
+with open('tok.pkl', 'wb') as handle:
+    pickle.dump(tok, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 def RNN():
     inputs = Input(name='inputs',shape=[max_len])
@@ -39,3 +44,5 @@ model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'
 
 model.fit(sequences_matrix,Y_train,batch_size=128,epochs=10,
           validation_split=0.2,callbacks=[EarlyStopping(monitor='val_loss',min_delta=0.0001)])
+
+model.save('spam_detector.hdf5')
