@@ -1,3 +1,4 @@
+import pickle
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import LSTM, Activation, Dense, Dropout, Input, Embedding
 from tensorflow.keras.optimizers import RMSprop
@@ -11,6 +12,16 @@ with open('X_test.pkl', 'rb') as f:
     X_test = pickle.load(f)
 with open('y_test.pkl', 'rb') as f:
     y_test = pickle.load(f)
+
+# loading the tokenizer
+with open('tok.pkl', 'rb') as handle:
+    tok = pickle.load(handle)
+
+# returns a compiled model
+# identical to the orginal one from training
+model = load_model('spam_detector.hdf5')
+model.summary()
+model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'])
 
 test_sequences = tok.texts_to_sequences(X_test)
 test_sequences_matrix = sequence.pad_sequences(test_sequences,maxlen=max_len)
