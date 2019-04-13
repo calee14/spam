@@ -6,6 +6,13 @@ from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.callbacks import EarlyStopping
 
+# Getting the training data
+with open('X_train.pkl', 'rb') as f:
+    X_train = pickle.load(f)
+with open('y_train.pkl', 'rb') as f:
+    y_train = pickle.load(f)
+    
+# creating the tokenizer and turning the dataset into sequences
 max_words = 1000
 max_len = 150
 tok = Tokenizer(num_words=max_words)
