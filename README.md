@@ -8,6 +8,8 @@
 
 # resources
 - https://stackoverflow.com/questions/41971587/how-to-convert-predicted-sequence-back-to-text-in-keras
+- https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
+- https://www.tensorflow.org/alpha/tutorials/sequences/text_classification_rnn
 - ~~Can try to make a terminal email viewer and implement my own spam detector~~
   - ~~https://gist.github.com/robulouski/7442321~~
   - ~~https://stackoverflow.com/questions/4908472/how-to-receive-mail-using-python~~
