@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
@@ -19,10 +18,10 @@ Y = Y.reshape(-1,1)
 
 # create the tesing and training data
 X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.15)
-print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+print(X_train.shape, X_test.shape, Y_train.shape, Y_test.shape)
 
 # save data to a picle file
-X_train.to_pickle('X_train.pkl')
-y_train.to_pickle('y_train.pkl')
-X_test.to_pickle('X_test.pkl')
-y_test.to_pickle('y_test.pkl')
+np.save('X_train', X_train)
+np.save('y_train', Y_train)
+np.save('X_test', X_test)
+np.save('y_test', Y_test)
