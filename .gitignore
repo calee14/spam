@@ -137,3 +137,6 @@ jquery-3.2.1.min.js
 data/
 mailconfig.py
 *.png
+*.npy
+*.hdf5
+*.pkl
