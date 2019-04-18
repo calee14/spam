@@ -1,3 +1,4 @@
+import numpy as np
 import pickle
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import LSTM, Activation, Dense, Dropout, Input, Embedding
@@ -8,10 +9,8 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.callbacks import EarlyStopping
 
 # Getting the training data
-with open('X_train.pkl', 'rb') as f:
-    X_train = pickle.load(f)
-with open('y_train.pkl', 'rb') as f:
-    y_train = pickle.load(f)
+X_train = np.load('X_train.npy')
+Y_train = np.load('y_train.npy')
 
 # creating the tokenizer and turning the dataset into sequences
 max_words = 1000
