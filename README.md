@@ -21,6 +21,10 @@
   - https://stackoverflow.com/questions/2626859/chrome-extension-how-to-capture-selected-text-and-send-to-a-web-service
 - Can try making a Chrome extension
 	- The user can highlight their email and the extentions will analyze the text and send it to a flask server. The flask server will run the model and the return the result in json. The json will hold a numerical value or a boolean represnting the content of the email.
-	- Make an automatic check for the email and send the message to a flask server. 
+	- Make an automatic check for the email and send the message to a flask server.
+- need to find a way to upload long strings:
+  - https://medium.freecodecamp.org/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa
+  - https://stackoverflow.com/questions/10434599/how-to-get-data-received-in-flask-request
+  - https://stackoverflow.com/questions/29987323/how-do-i-send-data-from-js-to-python-with-flask
 # Author
 - **Cap Lee**
