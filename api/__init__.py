@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import jsonify
+from spam_service import spam_service
 
 app = Flask(__name__)
 
@@ -9,4 +10,6 @@ def index():
 
 @app.route('/api/v1.0/<message>')
 def api(message):
-	return jsonify(message)
+	serv = spam_service()
+	result = serv.predict([message])
+	return jsonify(result)
