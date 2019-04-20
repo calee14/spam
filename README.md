@@ -1,9 +1,10 @@
 # spam detector
 # Notes:
 - Must find a way to incoporate model into an app
-  - make my own gmail site
-  - make my email interface in terminal
+  - ~~make my own gmail site~~ NOTE: Too complicated
+  - ~~make my email interface in terminal~~ sort of similar to 
   - make an app where you paste text from an email
+  - browser extension NOTE: Bingo!
   - div#:mp.ii.gt - to access the gmail content
 
 # resources
