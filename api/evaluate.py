@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.callbacks import EarlyStopping
-
+from tensorflow.keras.models import load_model
 # Getting the testing data
 with open('X_test.pkl', 'rb') as f:
     X_test = pickle.load(f)
