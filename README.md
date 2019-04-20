@@ -26,5 +26,6 @@
   - https://medium.freecodecamp.org/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa
   - https://stackoverflow.com/questions/10434599/how-to-get-data-received-in-flask-request
   - https://stackoverflow.com/questions/29987323/how-do-i-send-data-from-js-to-python-with-flask
+  - https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
 # Author
 - **Cap Lee**
