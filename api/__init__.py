@@ -13,7 +13,7 @@ def index():
 def api(message):
 	serv = spam_service.spam_service()
 	result = serv.predict([message])
-	return jsonify(result[0])
+	return jsonify(result[0][0].item())
 
 @app.route('/api/v1.1/', methods = ['POST'])
 def api_with_json_data():
