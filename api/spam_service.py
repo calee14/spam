@@ -31,6 +31,6 @@ class spam_service(object):
         seq = sequence.pad_sequences(seq,maxlen=self.max_len)
         result = self.model.predict(seq)
         return result
-#
+
 # s = spam_service()
-# print(s.predict(['Hello World']))
+# print(type(s.predict(['Hello World'])[0][0]))
