@@ -15,7 +15,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     // ...check the URL of the active tab against our pattern and...
     // if (urlRegex.test(tab.url)) {
         // ...if it matches, send a message specifying a callback too
-        chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
+        // chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
     // }
 });
 // When the browser-action button, the extension icon, is clicked...
@@ -28,6 +28,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 function sendServiceRequest(selectedText) {
-  var serviceCall = 'http://www.google.com/search?q=' + selectedText;
-  chrome.tabs.create({url: serviceCall});
+  $.post( "https://spam-detect.herokuapp.com/api/v1.1/", {
+    "javascript_data": selectedText 
+  }, function(data, status) {
+    selectedText = data + " " + status;
+    var serviceCall = 'http://www.google.com/search?q=' + selectedText;
+    chrome.tabs.create({url: serviceCall});
+  });
 }
