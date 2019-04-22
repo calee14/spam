@@ -14,8 +14,8 @@
   "permissions": ["tabs", 
     "activeTab", 
     "identity",
-    "*://*.google.com/*"],
+    "<all_urls>"],
 	"background": {
-  	"scripts": ["background.js"]
+  	"scripts": ["background.js", "jquery-3.2.1.min.js"]
 	}
 }
