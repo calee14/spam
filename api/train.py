@@ -25,6 +25,7 @@ sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len)
 with open('tok.pkl', 'wb') as handle:
     pickle.dump(tok, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+# define the model
 def RNN():
     inputs = Input(name='inputs',shape=[max_len])
     layer = Embedding(max_words,50,input_length=max_len)(inputs)
@@ -37,11 +38,15 @@ def RNN():
     model = Model(inputs=inputs,outputs=layer)
     return model
 
+# create the model
 model = RNN()
 model.summary()
 model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'])
 
+# start training it on the data
+# stop when accuracy reaches 99.9999
 model.fit(sequences_matrix,Y_train,batch_size=128,epochs=10,
           validation_split=0.2,callbacks=[EarlyStopping(monitor='val_loss',min_delta=0.0001)])
 
+# save the model
 model.save('spam_detector.hdf5')
