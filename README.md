@@ -1,5 +1,5 @@
 # spam detector
-# Notes:
+# notes:
 - Must find a way to incoporate model into an app
   - ~~make my own gmail site~~ NOTE: Too complicated
   - ~~make my email interface in terminal~~ sort of similar to 
@@ -28,5 +28,5 @@
   - https://stackoverflow.com/questions/10434599/how-to-get-data-received-in-flask-request
   - https://stackoverflow.com/questions/29987323/how-do-i-send-data-from-js-to-python-with-flask
   - https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
-# Author
+# author
 - **Cap Lee**
