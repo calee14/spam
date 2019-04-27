@@ -28,3 +28,15 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     	// Call the specified callback passing no infomration
     	sendResponse({}); // snub them.
 });
+
+// Listen for messages
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    // If the recieived request has the expected format...
+    if (request.method == "checkIfSelection")
+        // Call the specified callback, passing
+        // a boolean: true if there is selected text, false for none
+        sendResponse({data: window.getSelection().toString()});
+    else
+        // Call the specified callback passing no infomration
+        sendResponse({}); // snub them.
+});
