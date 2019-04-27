@@ -12,12 +12,17 @@ function doStuffWithDom(domContent) {
 
 // When the browser-action button is clicked...
 chrome.browserAction.onClicked.addListener(function (tab) {
-    // ...check the URL of the active tab against our pattern and...
-    // if (urlRegex.test(tab.url)) {
-        // ...if it matches, send a message specifying a callback too
-        chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
-    // }
+  // ...check the URL of the active tab against our pattern and...
+  // if (urlRegex.test(tab.url)) {
+      // ...if it matches, send a message specifying a callback too
+      // chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, sendServiceRequest);
+  // }
+  chrome.tabs.sendRequest(tab.id, {method: "report_back"}, function(response) {
+    // Have the callback make a service call to an api
+    sendServiceRequest(response.data);
+  });
 });
+
 // When the browser-action button, the extension icon, is clicked...
 chrome.browserAction.onClicked.addListener(function(tab) {
 	// make a request to the to get the selected text
@@ -28,7 +33,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 function sendServiceRequest(selectedText) {
-  $.post( "https://spam-detect.herokuapp.com/api/v1.1/", {
+  $.post("https://spam-detect.herokuapp.com/api/v1.1/", {
     "javascript_data": selectedText 
   }, function(data, status) {
     selectedText = data + " " + status;
