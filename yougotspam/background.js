@@ -21,15 +21,20 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     // Have the callback make a service call to an api
     sendServiceRequest(response.data);
   });
+  // make a request to the to get the selected text
+  chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response) {
+    // Have the callback make a service call to an api
+    if(response) {
+      sendServiceRequest(response.data);
+    } else {
+      sendServiceRequest("those is not highlighted stuff")
+    }
+  });
 });
 
 // When the browser-action button, the extension icon, is clicked...
 chrome.browserAction.onClicked.addListener(function(tab) {
-	// make a request to the to get the selected text
-  	chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response) {
-  		// Have the callback make a service call to an api
-     	sendServiceRequest(response.data);
-  	});
+	
 });
 
 function sendServiceRequest(selectedText) {
