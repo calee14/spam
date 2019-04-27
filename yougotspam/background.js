@@ -17,6 +17,9 @@ chrome.browserAction.onClicked.addListener(function (tab) {
       // ...if it matches, send a message specifying a callback too
       // chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, sendServiceRequest);
   // }
+  chrome.tabs.sendRequest(tab.id, {method: "checkIfSelection"}, function(response) {
+    
+  });
   chrome.tabs.sendRequest(tab.id, {method: "report_back"}, function(response) {
     // Have the callback make a service call to an api
     sendServiceRequest(response.data);
