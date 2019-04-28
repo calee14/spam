@@ -1,7 +1,7 @@
 // Listen for messages
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
     // If the received message has the expected format...
-    if (request.method == 'report_back') {
+    if (request.method == "report_back") {
         // Call the specified callback, passing
         // the web-page's DOM content as argument
         var message = "";
@@ -12,9 +12,9 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 		}
         console.log(message)
         sendResponse({data: message});
-    } else {
+    }/* else {
         sendResponse({});
-    }
+    }*/
 });
 
 // Listen for messages
@@ -25,16 +25,16 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
         // the selected text
         console.log(window.getSelection().toString());
 		sendResponse({data: window.getSelection().toString()});
-    } else {
+    } /*else {
     	// Call the specified callback passing no infomration
     	sendResponse({}); // NOTE: maybe remove this because it will cause unnecessary api requests
-    }
+    }*/
 });
 
 // Listen for messages
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     // If the recieived request has the expected format...
-    if (request.method == "checkIfSelection")
+    if (request.method == "checkIfSelection") {
         // Call the specified callback, passing
         // a boolean: true if there is selected text, false for none
         if(window.getSelection().toString().length > 0) {
@@ -44,7 +44,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             console.log('we dont have selection');
             sendResponse(false);
         }
-    else
+    } /*else {
         // Call the specified callback passing no infomration
         sendResponse({}); // snub them.
+    }*/
 });
