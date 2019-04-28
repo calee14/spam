@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "You Got Spam",
-  "version": "0.16",
+  "version": "0.25",
   "content_scripts": [
     {
       "matches": ["*://*.stackoverflow.com/*", "https://mail.google.com/*"],
