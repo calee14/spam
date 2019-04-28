@@ -1,3 +1,8 @@
+$.get(chrome.extension.getURL('./index.html'), function(data) {
+    // Or if you're using jQuery 1.8+:
+    $($.parseHTML(data)).appendTo('body');
+});
+
 // Listen for messages
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
     // If the received message has the expected format...
