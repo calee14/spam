@@ -26,7 +26,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		sendResponse({data: window.getSelection().toString()});
     else
     	// Call the specified callback passing no infomration
-    	sendResponse({}); // snub them.
+    	sendResponse({}); // NOTE: maybe remove this because it will cause unnecessary api requests
 });
 
 // Listen for messages
