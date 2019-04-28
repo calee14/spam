@@ -27,18 +27,17 @@ chrome.browserAction.onClicked.addListener(function (tab) {
   });
   // make a request to the to get the selected text
   chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response) {
-    // Have the callback make a service call to an api
-    if(response) {
-      sendServiceRequest(response.data);
-    } else {
-      sendServiceRequest("those is not highlighted stuff")
-    }
+    chrome.tabs.sendRequest(tab.id, {method: "checkIfSelection"}, function(selection) {
+      if(selection == true) {
+        // Have the callback make a service call to an api
+        if(response) {
+          sendServiceRequest(response.data);
+        } else {
+          sendServiceRequest("those is not highlighted stuff")
+        }
+      }
+    });
   });
-});
-
-// When the browser-action button, the extension icon, is clicked...
-chrome.browserAction.onClicked.addListener(function(tab) {
-	
 });
 
 function sendServiceRequest(selectedText) {
