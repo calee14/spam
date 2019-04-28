@@ -35,7 +35,11 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     if (request.method == "checkIfSelection")
         // Call the specified callback, passing
         // a boolean: true if there is selected text, false for none
-        sendResponse({data: window.getSelection().toString()});
+        if(window.getSelection().toString().length > 0) {
+            sendResponse({selection: true});
+        } else {
+            sendResponse({selection: false})
+        }
     else
         // Call the specified callback passing no infomration
         sendResponse({}); // snub them.
