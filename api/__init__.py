@@ -19,4 +19,6 @@ def api(message):
 def api_with_json_data():
 	jsdata = request.form['javascript_data']
 	text = json.loads(jsdata)[0]
-	return jsonify(text)
+	serv = spam_service.spam_service()
+	result = serv.predict([text])
+	return jsonify(result)
