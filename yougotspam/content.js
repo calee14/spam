@@ -1,16 +1,18 @@
-$.get(chrome.extension.getURL('./index.html'), function(data) {
-    // Or if you're using jQuery 1.8+:
-    $($.parseHTML(data)).appendTo('body');
-    var s = document.createElement('script');
-    // TODO: add "script.js" to web_accessible_resources in manifest.json
-    s.src = chrome.runtime.getURL('popup.js');
-    s.onload = function() {
-        this.remove();
-    };
-    (document.head || document.documentElement).appendChild(s);
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (request.method == "makePopup") {
+        $.get(chrome.extension.getURL('./index.html'), function(data) {
+            // Or if you're using jQuery 1.8+:
+            $($.parseHTML(data)).appendTo('body');
+            var s = document.createElement('script');
+            // TODO: add "script.js" to web_accessible_resources in manifest.json
+            s.src = chrome.runtime.getURL('popup.js');
+            s.onload = function() {
+                this.remove();
+            };
+            (document.head || document.documentElement).appendChild(s);
+        });
+    }
 });
-
-
 
 // Listen for messages
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
