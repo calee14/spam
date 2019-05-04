@@ -3,6 +3,9 @@
 // var urlRegex = /^https?:\/\/(?:[^./?#]+\.)?google\.com/;
 // var urlRegex = "https://mail.google.com/"
 // A function to use as callback
+
+var tab_id;
+
 function doStuffWithDom(domContent) {
     console.log('I received the following DOM content:\n');
     console.log(domContent)
@@ -12,6 +15,7 @@ function doStuffWithDom(domContent) {
 
 // When the browser-action button is clicked...
 chrome.browserAction.onClicked.addListener(function (tab) {
+  tab_id = tab.id;
   // ...check the URL of the active tab against our pattern and...
   // if (urlRegex.test(tab.url)) {
       // ...if it matches, send a message specifying a callback too
@@ -31,9 +35,9 @@ chrome.browserAction.onClicked.addListener(function (tab) {
       if(selection == true) {
         // Have the callback make a service call to an api
         if(response) {
-          sendServiceRequest(response.data);
+          sendServiceRequest(response.data, tab);
         } else {
-          sendServiceRequest("those is not highlighted stuff")
+          sendServiceRequest("those are not highlighted stuff");
         }
       }
     });
@@ -47,5 +51,6 @@ function sendServiceRequest(selectedText) {
     selectedText = data + " " + status;
     var serviceCall = 'http://www.google.com/search?q=' + selectedText;
     chrome.tabs.create({url: serviceCall});
+    chrome.tabs.sendRequest(tab_id, {method: "makePopup"}, function(response){return});
   });
 }
