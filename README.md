@@ -1,4 +1,6 @@
 # spam detector
+# todo:
+- [ ] update server code to return boolean saying whether the email is spam or not.
 # notes:
 - Must find a way to incoporate model into an app
   - ~~make my own gmail site~~ NOTE: Too complicated
