@@ -2,6 +2,7 @@
 # todo:
 - [ ] update server code to return boolean saying whether the email is spam or not.
 - [ ] the request data type: ```params -> String[][] returns -> Double[][]```
+- [ ] update the server code to receive the data in double arrays
 # notes:
 - Must find a way to incoporate model into an app
   - ~~make my own gmail site~~ NOTE: Too complicated
