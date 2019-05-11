@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "You Got Spam",
-  "version": "0.60",
+  "version": "0.65",
   "content_scripts": [
     {
       "matches": ["*://*.stackoverflow.com/*", "https://mail.google.com/*"],
@@ -20,7 +20,8 @@
   	"scripts": ["background.js", "jquery-3.2.1.min.js"]
 	},
   "web_accessible_resources": [
-    "index.html",
+    "detected.html",
+    "notdetected.html",
     "popup.js"
   ]
 }
