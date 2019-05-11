@@ -50,7 +50,16 @@ function sendServiceRequest(selectedText) {
   }, function(data, status) {
     selectedText = data + " " + status;
     var serviceCall = 'http://www.google.com/search?q=' + selectedText;
-    chrome.tabs.create({url: serviceCall});
-    chrome.tabs.sendRequest(tab_id, {method: "makePopup"}, function(response){return});
+    /*
+      Check the result and make a popup alerting the spam
+    */
+    if(selectedText.length() >= 100) { /* Change condition for int comparison when we update the server*/
+      chrome.tabs.create({url: serviceCall});
+      chrome.tabs.sendRequest(tab_id, {method: "makeDetectPopup"}, function(response){return});
+    } else if(selectedText.length() < 100) {
+      chrome.tabs.create({url: serviceCall});
+      chrome.tabs.sendRequest(tab_id, {method: "makeNotDetectedPopup"}, function(response){return});
+    }
+    
   });
 }
