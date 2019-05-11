@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <style id="popup-styles">
+    .container {
+      max-height: 300px;
+      min-height: 100px;
+      width: 300px;
+      border: 1px solid rgba(0,0,0,0.3);
+      border-radius: 2px;
+      background: white;
+      z-index: 10000;
+      top: 10px;
+      right: 10px;
+      position: absolute;
+      padding: none;
+    }
+    body {
+      font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+      font-size: 100%;
+    }
+    #status {
+      /* avoid an excessively wide status text */
+      white-space: pre;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 400px;
+    }
+    #extension-header {
+      background-color: #47cf73;
+      height: 30px;
+      padding-top: 10px;
+    }
+    h3 {
+      color: #F9F8F8;
+      margin-top: 0px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+  </style>
+  <div class="container" id="popup-html">
+    <div class="page-header">
+      <div id="extension-header">
+        <h3>Spam Inspector</h3>
+      </div>
+      <p id="status">You don't have spam in this email</p>
+    </div>
+  </div>
+</body>
+</html>
