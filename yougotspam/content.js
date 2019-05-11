@@ -1,6 +1,22 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    if (request.method == "makePopup") {
-        $.get(chrome.extension.getURL('./index.html'), function(data) {
+    /*
+        Listening for popup requests
+    */
+    if (request.method == "makeDetectPopup") {
+        $.get(chrome.extension.getURL('./detected.html'), function(data) {
+            // Or if you're using jQuery 1.8+:
+            $($.parseHTML(data)).appendTo('body');
+            var s = document.createElement('script');
+            // TODO: add "script.js" to web_accessible_resources in manifest.json
+            s.src = chrome.runtime.getURL('popup.js');
+            s.onload = function() {
+                this.remove();
+            };
+            (document.head || document.documentElement).appendChild(s);
+        });
+    }
+    if(request.method == "makeNotDetectedPopup") {
+        $.get(chrome.extension.getURL('./notdetected.html'), function(data) {
             // Or if you're using jQuery 1.8+:
             $($.parseHTML(data)).appendTo('body');
             var s = document.createElement('script');
