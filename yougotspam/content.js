@@ -2,7 +2,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     /*
         Listening for popup requests
     */
-    if (request.method == "makeDetectPopup") {
+    if (request.method == "makeDetectedPopup") {
         $.get(chrome.extension.getURL('./detected.html'), function(data) {
             // Or if you're using jQuery 1.8+:
             $($.parseHTML(data)).appendTo('body');
@@ -14,7 +14,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
             };
             (document.head || document.documentElement).appendChild(s);
         });
-    }
+    } 
     if(request.method == "makeNotDetectedPopup") {
         $.get(chrome.extension.getURL('./notdetected.html'), function(data) {
             // Or if you're using jQuery 1.8+:
