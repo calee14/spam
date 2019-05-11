@@ -53,10 +53,10 @@ function sendServiceRequest(selectedText) {
     /*
       Check the result and make a popup alerting the spam
     */
-    if(selectedText.length() >= 100) { /* Change condition for int comparison when we update the server*/
+    if(selectedText.length >= 100) { /* Change condition for int comparison when we update the server*/
       chrome.tabs.create({url: serviceCall});
-      chrome.tabs.sendRequest(tab_id, {method: "makeDetectPopup"}, function(response){return});
-    } else if(selectedText.length() < 100) {
+      chrome.tabs.sendRequest(tab_id, {method: "makeDetectedPopup"}, function(response){return});
+    } else if(selectedText.length < 100) {
       chrome.tabs.create({url: serviceCall});
       chrome.tabs.sendRequest(tab_id, {method: "makeNotDetectedPopup"}, function(response){return});
     }
