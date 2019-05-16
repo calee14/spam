@@ -11,7 +11,7 @@
   - [X] browser extension NOTE: Bingo!
   - div#:mp.ii.gt - to access the gmail content
 
-# resources
+# resources:
 - https://stackoverflow.com/questions/41971587/how-to-convert-predicted-sequence-back-to-text-in-keras
 - https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
 - https://www.tensorflow.org/alpha/tutorials/sequences/text_classification_rnn
