@@ -4,6 +4,10 @@
 // var urlRegex = "https://mail.google.com/"
 // A function to use as callback
 
+/*
+Store the tab_id so that the api call can access and make the right request
+to the content.js
+*/
 var tab_id;
 
 function doStuffWithDom(domContent) {
@@ -47,16 +51,17 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 function sendServiceRequest(selectedText) {
   $.post("https://spam-detect.herokuapp.com/api/v1.1/", {
     "javascript_data": selectedText 
-  }, function(data, status) {
-    selectedText = data + " " + status;
+  }, function(email_score, status) {
+    email_score = email_score[0] // get the result the model gave which is located in a list
+    selectedText = email_score + " " + status;
     var serviceCall = 'http://www.google.com/search?q=' + selectedText;
     /*
       Check the result and make a popup alerting the spam
     */
-    if(selectedText.length >= 100) { /* Change condition for int comparison when we update the server*/
+    if(email_score >= 0.4) { /* Change condition for int comparison when we update the server*/
       chrome.tabs.create({url: serviceCall});
       chrome.tabs.sendRequest(tab_id, {method: "makeDetectedPopup"}, function(response){return});
-    } else if(selectedText.length < 100) {
+    } else if(email_score < 0.4) {
       chrome.tabs.create({url: serviceCall});
       chrome.tabs.sendRequest(tab_id, {method: "makeNotDetectedPopup"}, function(response){return});
     }
