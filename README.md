@@ -1,10 +1,10 @@
 # spam detector
 # todo:
 - [ ] update server code to return boolean saying whether the email is spam or not.
-- [ ] the request data type: ```params -> String[][] returns -> Double[][]```
-- [ ] update the server code to receive the data in double arrays
+- [ ] the request data type: ```params -> String[][] returns -> Double[][]``` - might skip this since it would be too much work. I can just update the model to take in more than 150 characters
+- [X] update the server code to receive the data in double arrays
 - [ ] analyze and label data for ml
-- [ ] touch up on ui
+- [X] touch up on ui - Looks good enough
 # notes:
 - Must find a way to incoporate model into an app
   - ~~make my own gmail site~~ NOTE: Too complicated
